@@ -1,0 +1,31 @@
+1° Crie o campo data_publicacao no modelo Noticia;
+
+data_publicacao = models.DateField('data publicação', max_length=128, blank=True, null=True)
+python manage.py makemigrations
+python manage.py migrate
+
+2° Execute os seguintes comandos:
+  *Crie 5 noticias;
+	n = Noticia.objects.create(conteudo = 'nn sei de nada' , data_publicacao= '2020-01-01' , titulo= 'LPC', auto= 'Fabio' )
+
+	n = Noticia.objects.create(conteudo = 'fazendo gloss' , data_publicacao= '2020-03-06' , titulo= 'Cosmetico' , auto= 'Roberto' )
+
+	n = Noticia.objects.create(conteudo = 'ainda nn sei nada' , data_publicacao= 2020-03-06' , titulo= 'LPC/2' , auto= 'Fabio' )
+
+	n = Noticia.objects.create(conteudo = 'roubo o dinheiro do povo' , data_publicacao= '2020-02-12', titulo= 'Governo', auto= 'Roberto' )
+
+	n = Noticia.objects.create(conteudo = '...', data_publicacao= '2020-02-02' , titulo= 'Carnaval', auto= 'Roberto' )
+
+  *Recupere as noticias do mês de janeiro que tem “Fabio” como autor;
+	n = Noticia.objects.filter(data_publicacao__month= 1).filter(auto = 'Fabio')
+
+  *Recupere todas as noticias que não são do autor “Roberto”;
+	n = Noticia.objects.exclude(auto = 'Roberto') 
+  
+  *Atualize o autor da noticia de id 6;
+	n = Noticia.objects.get(id = 6)
+	n.auto = "Natanna"
+
+  *Recupere as 3 primeiras noticias do autor “Roberto” que não são do mês de Março;	
+	n = Noticia.objects.filter(autor = "Roberto").exclude(data_publicacao__month = 3)
+ 
